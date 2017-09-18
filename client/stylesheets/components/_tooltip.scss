@@ -1,0 +1,55 @@
+[data-tooltip], [data-tooltip-focus] {
+  position: relative;
+  overflow: visible;
+
+  &:after, &:before {
+    position: absolute;
+    left: 50%;
+    bottom: 105%;
+    opacity: 0;
+  }
+  &:after {
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    margin-left: -5px;
+    border-top: 5px solid $color-dark;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+  }
+  &:before {
+    transform: translateX(-50%);
+    opacity: 0;
+    // transition: opacity .1s ease-in-out;
+    z-index: z('modal');
+    pointer-events: none;
+    min-width: 135px;
+    max-width: 200px;
+    background-color: $color-dark;
+    color: $color-light;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 2px;
+    @include font-size(12px);
+    font-family: "DinPro Regular";
+    margin-bottom: 5px;
+    line-height: 1.15;
+  }
+}
+[data-tooltip] {
+  &:before {
+    content: attr(data-tooltip);
+  }
+  &:hover:after, &:hover:before {
+    opacity: 0.9;
+  }
+}
+[data-tooltip-focus] {
+  &:before {
+    content: attr(data-tooltip-focus);
+  }
+  &:active:after, &:active:before {
+    opacity: 0.9;
+  }
+}

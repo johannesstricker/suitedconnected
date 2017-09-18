@@ -1,0 +1,8 @@
+# SETTINGS
+settings.development.json
+settings.production.json
+
+# DIRS
+node_modules/
+build/
+deploy/

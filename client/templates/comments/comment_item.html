@@ -1,0 +1,27 @@
+<template name="commentItem">
+	<div class="comment-item" id="comment-{{_id}}">
+		<div class="title">
+			<img src="{{thumbnail 'large'}}" alt="" class="user-thumbnail">
+			<p class="author"><a href="{{pathFor 'profile' _id=userId}}">{{author}}</a> replied {{fromNow submitted}}</p>
+		</div>
+		<div>
+			<p class="body">
+				{{{body}}}
+			</p>
+
+			<p class="text-right">
+				{{#if canDelete}}
+					<a href="#" class="no-highlight-dark js-delete-comment">delete</a>
+				{{/if}}
+				{{#if canEdit}}
+					<a href="#" class="no-highlight-dark js-edit-comment">edit</a>
+				{{/if}}
+				{{#if canUpvote}}
+					<a href="#" id="upvote"  data-tooltip="Like this? Tip the author.">{{votes}} &#10084;</a>
+				{{else}}
+					{{votes}} &#10084;
+				{{/if}}
+			</p>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,113 @@
+.account {
+  padding-bottom: $spacing-bottom;
+}
+.head-margin {
+  margin-bottom: 65px;
+}
+.head {
+  position: relative;
+  background-color: transparent;
+
+  &:before {
+    content: ' ';
+    background-color: $color-dark2;
+    position: absolute;
+    width: 200%;
+    @include respond-to('small') {
+      @include responsive-property(width, $main-container-width);
+    }
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  * {
+    z-index: z('content') + 1;
+  }
+
+  padding-top: 10px;
+  padding-bottom: 25px;
+  min-height: 60px;
+  @include respond-to('xsmall') {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    min-height: 100px;
+    &.head-margin {
+      margin-bottom: 100px;
+    }
+  }
+  vertical-align: bottom;
+
+  h1,h2,h3,h4,h5,h6 {
+    color: $color-light;
+  }
+  a {
+    color: $color-light;
+
+    &:hover {
+      color: $color-light;
+      text-decoration: underline;
+    }
+  }
+
+  .head-thumbnail {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 35%);
+    text-align: center;
+    background-color: $color-highlight;
+
+    @include respond-to('xsmall') {
+      width: 100px;
+      height: 100px;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      color: $color-highlight;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      border: 3px solid $color-shade;
+    }
+    & > div {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      position: relative;
+    }
+    .edit {
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      width: 100%;
+      height: 100%;
+      background-image: url('/img/icons/upload.png');
+      background-size: 70%;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      cursor: pointer;
+      transition: opacity .25s ease-in-out;
+      -webkit-backface-visibility: hidden;
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+  }
+  .your-account {
+    position: absolute;
+    bottom: 15px;
+    @include font-size(14px);
+    @include respond-to('xsmall') { @include font-size(24px); }
+    @include respond-to('large') { @include font-size(26px); }
+  }
+}

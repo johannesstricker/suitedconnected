@@ -1,0 +1,17 @@
+#imagelightbox {
+    position: fixed;
+    z-index: z('modal') + 2;
+    touch-action: none;
+}
+#imagelightbox, #imagelightbox-overlay {
+	animation: fadeIn .5s ease-in-out;
+}
+#imagelightbox-overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: z('modal') + 1;
+	background-color: rgba($color-dark, 0.75);
+}

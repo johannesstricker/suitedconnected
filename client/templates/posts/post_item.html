@@ -1,0 +1,28 @@
+<template name="postItem">
+	<div class="post {{#if isRead}}read{{/if}}">
+		<!-- THUMBNAIL -->
+		<div class="author-thumbnail">
+			<img src="{{thumbnail 'large'}}" alt="{{author}}">
+		</div>
+
+		<div>
+			<!-- AUTHOR & TIME -->
+			<p class="author">
+				{{#if lastActiveUserId}}
+					last reply {{fromNow lastActivity}} by <a href="{{pathFor 'profile' _id=lastActiveUserId}}"><strong>{{lastActiveUser}}</strong></a>
+				{{else}}
+					submitted {{fromNow lastActivity}} by <a href="{{pathFor 'profile' _id=userId}}"><strong>{{author}}</strong></a>
+				{{/if}}
+				{{#if isPrivate}} in <a href="{{pathFor 'groupPage' _id=findGroup._id}}"><strong>{{findGroup.name}}</strong></a>{{/if}}
+			</p>
+
+			<!-- TITLE -->
+			<h4><a class="title" href="{{pathFor 'postPage'}}">{{title}}</a></h4>
+
+			<!-- TAGS & META -->
+			<p class="meta">
+				{{#each findTags}}<span class="tag tag-selectable">{{name}}</span>{{/each}}
+			</p>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,33 @@
+<template name="groupList">
+	<div class="group-list dropdown-content">
+		<div class="dropdown-head">
+			<p class="text-right"><a href="{{pathFor 'groupCreate'}}">Create group</a></p>
+		</div>
+
+		<div class="slim-scroll js-scroll">
+			<ul class="dropdown-list">
+				{{#each groups}}
+					{{> groupListEntry}}
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</template>
+
+<template name="groupListEntry">
+	{{#if isInvited}}
+		<li class="dropdown-list-element-container">
+			<a href="{{pathFor 'groupJoin'}}" class="dropdown-list-element thumbnail-element invited">
+				<img src="{{thumbnail 'small'}}" alt="{{name}}" class="thumbnail-element-img thumb-size-s">
+				<span class="thumbnail-element-text">{{name}}</span>
+			</a>
+		</li>
+	{{else}}
+		<li class="dropdown-list-element-container">
+			<a href="{{pathFor 'groupPage'}}" class="dropdown-list-element thumbnail-element">
+				<img src="{{thumbnail 'small'}}" alt="{{name}}" class="thumbnail-element-img thumb-size-s">
+				<span class="thumbnail-element-text">{{name}}</span>
+			</a>
+		</li>
+	{{/if}}
+</template>

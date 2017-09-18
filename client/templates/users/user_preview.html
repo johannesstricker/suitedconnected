@@ -1,0 +1,15 @@
+<template name="userPreview">
+	{{#unless instance.state.get 'isLoading'}}
+		<div class="user-preview animated fadeIn">
+			<div>
+				<img src="{{instance.user.thumbnail 'large'}}" alt="{{instance.user.username}}">
+				<h4>{{instance.user.username}}</h4>
+				<p>{{capText instance.user.getInfo 125}}</p>
+			</div>
+			<div></div>
+			<div>
+				<p class="meta">{{instance.user.stats.postCount}} posts | {{instance.user.stats.commentCount}} comments | {{instance.user.stats.stack}} chips</p>
+			</div>
+		</div>
+	{{/unless}}
+</template>

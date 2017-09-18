@@ -1,0 +1,12 @@
+.group-invitations {
+	& > div {
+		margin-bottom: 10px;
+	}
+
+
+	.members {
+		& > p {
+			color: $color-secondary;
+		}
+	}
+}

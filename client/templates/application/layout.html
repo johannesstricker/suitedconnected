@@ -1,0 +1,52 @@
+<template name="layout">
+  <!-- MOBILE MENU -->
+  {{> mobileMenu}}
+
+  <!-- HEADER -->
+  <div class="header-container">
+    <div class="header-background">
+      <div class="primary-navigation-container navigation-background"></div>
+      <div class="secondary-navigation-container navigation-background"></div>
+    </div>
+
+    <div class="layout-container">
+      <div class="main-container">
+        <div class="primary-navigation-container primary-navigation-container-main">
+          {{> primaryNavigation}}
+          <div id="logo"><img src="/img/logo.svg" alt="suitedconnected"></div>
+        </div>
+        <div class="secondary-navigation-container secondary-navigation-container-main">
+          {{> secondaryNavigation}}
+        </div>
+      </div><!--
+      --><div class="side-container">
+        <div class="primary-navigation-container">
+          {{> Template.dynamic template=getAccountDropdownTemplate}}
+        </div>
+        <!-- <div class="secondary-navigation-container"><h3>{{sidebarTitle}}</h3></div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="layout-container" id="sidebar-parent">
+    <div class="main-container">
+      <div class="main-inner-container">
+        {{> yield}}
+      </div>
+    </div><!--
+    --><div id="sidebar" class="side-container">
+      <div class="side-inner-container" id="sticky-sidebar">
+        {{> sidebarBootstrap}}
+      </div>
+    </div>
+
+    <!-- ERRORS -->
+    {{> errors}}
+  </div>
+
+  <!-- FEEDBACK -->
+  {{#if currentUser}}
+    {{> feedback}}
+  {{/if}}
+</template>

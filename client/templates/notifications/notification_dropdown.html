@@ -1,0 +1,6 @@
+<template name="notificationDropdown">
+  <div class="dropdown dropdown-hover notification-dropdown navigation-element">
+    <a href="#" class="dropdown-toggle navigation-link {{ifnotecho currentUser 'disabled'}}">Notifications</a>
+    {{> notificationList}}
+  </div>
+</template>

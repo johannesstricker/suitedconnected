@@ -1,0 +1,24 @@
+<template name="profile">
+	<div class="profile  {{ifecho notificationCount 'visible'}}">
+			{{> profileUser}}
+			<a href="#" class="dropdown-toggle navigation-link notification-toggle">
+				<img src="/img/icons/notification.svg" alt="Notifications">
+				{{#if notificationCount}}<span class="notification-count">{{notificationCount}}</span>{{/if}}
+			</a>
+	</div>
+</template>
+
+<template name="profileUser">
+	{{#with currentUser}}
+	<img class="user-thumbnail thumb-size-m" src="{{thumbnail 'large'}}" alt="{{username}}">
+
+	<div class="user">
+		<p class="username"><a href="{{pathFor 'profile' _id=currentUser._id}}">{{username}}</a></p>
+		<p class="logout-btn">
+			<a href="#" class="js-click-logout small no-highlight">Logout</a>
+		</p>
+	</div>
+	{{/with}}
+</template>
+
+

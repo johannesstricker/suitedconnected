@@ -1,0 +1,11 @@
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@function z($layer) {
+	@if not map-has-key($z-layers, $layer) {
+    	@error "No layer found for `#{$layer}` in $z-layers map.";
+  	}
+  	@return map-get($z-layers, $layer);
+}

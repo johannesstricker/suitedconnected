@@ -1,0 +1,15 @@
+<template name="emailVerification">
+	<div class="email-verification">
+		{{#if instance.pending.get}}
+			<h2>Your email is currently being verified.</h2>
+			{{> spinner}}
+		{{else}}
+			{{#if instance.verified.get}}
+				<h2>Your email has been verified. Start participating now!</h2>
+			{{else}}
+				<h2 class="has-error">Oops, there has been an error with your verification.</h2>
+				<p class="has-error">{{instance.error.get}}</p>
+			{{/if}}
+		{{/if}}
+	</div>
+</template>

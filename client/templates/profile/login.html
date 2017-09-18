@@ -1,0 +1,27 @@
+<template name="login">
+	<div class="login">
+	    <form id="login-form">
+
+	        <div class="{{errorClass 'email'}}">
+	            <div class="input-addon">
+	            	<span class="input-addon-item"><img src="/img/icons/user_01.svg" alt="username or email"></span>
+	            	<input class="input-addon-field" type="text" name="email" placeholder="Login with your email or username...">
+	            </div>
+	            <p class="help-block">{{errorMessage 'email'}}</p>
+	        </div>
+
+	        <div class="{{errorClass 'password'}}">
+	        		<div class="input-addon">
+	        			<span class="input-addon-item"><img src="/img/icons/password.svg" alt="username or email"></span>
+	        			<input class="input-addon-field" type="password" name="password" placeholder="">
+	        		</div>
+	            <p class="help-block">{{errorMessage 'password'}}</p>
+	        </div>
+
+	        <p class="help-block {{errorClass 'login'}}">{{errorMessage 'login'}}</p>
+
+					<input type="button" value="Register" class="js-show-signup btn btn-default js-no-close"><!--
+	        --><input type="submit" value="Login" class="btn btn-primary js-no-close">
+	    </form>
+	</div>
+</template>

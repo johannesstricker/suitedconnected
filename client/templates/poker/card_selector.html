@@ -1,0 +1,19 @@
+<template name="cardSelector">
+	<div class="card-selector">
+		{{#each suits}}
+			<div class="suits">
+				{{#each this}}
+					<div class="ranks">
+						<a href="#" data-card="{{this}}" class="card {{cardSuit this}} selectable {{selected this}}">{{cardRank this}}</a>
+					</div>
+				{{/each}}				
+			</div>
+		{{/each}}
+	</div>
+	{{#if acceptEnabled}}
+		<a href="#" id="accept" class="btn btn-primary">Accept</a>
+	{{else}}
+		<a href="#" class="btn btn-primary disabled">Accept</a>
+	{{/if}}
+	<a href="#" id="cancel" class="btn btn-default">Cancel</a>
+</template>

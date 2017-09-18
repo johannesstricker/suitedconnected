@@ -1,0 +1,36 @@
+<template name="primaryNavigation">
+  <div class="primary-navigation navigation-list">
+    <div class="navigation-element">
+      <a class="navigation-link {{highlightActiveRoute 'index' 'public' 'private'}}" href="{{pathFor 'index' 'feed'}}">
+        <img class="navigation-icon" src="/img/icons/navigation/newsfeed.svg" alt="Newsfeed">
+        Newsfeed
+      </a>
+    </div>
+
+    <div class="navigation-element">
+      <a class="navigation-link {{highlightActiveRoute 'myPosts'}} {{ifnotecho currentUser 'disabled'}}" href="{{pathFor 'myPosts'}}">
+        <img class="navigation-icon" src="/img/icons/navigation/posts.svg" alt="My Posts">
+        My Posts
+      </a>
+    </div>
+
+    <div class="group-dropdown dropdown dropdown-hover navigation-element">
+      <a href="#" class="dropdown-toggle navigation-link {{highlightActiveRoute 'groupPage' 'groupEdit' 'groupJoin' 'groupCreate'}} {{ifnotecho currentUser 'disabled'}}">
+        <img class="navigation-icon" src="/img/icons/navigation/groups.svg" alt="Private Groups">
+        Private Groups
+      </a>
+      {{> groupList}}
+    </div>
+  </div>
+</template>
+
+<template name="secondaryNavigation">
+  <div class="secondary-navigation">
+<!--     <div class="input-addon">
+      <span class="input-addon-item"><img src="/img/icons/tag.svg" alt="Tags"></span>
+      <input class="input-addon-field" type="text" placeholder="Enter some tags...">
+    </div> -->
+    {{> tagInput settings=tagInputSettings}}
+    <a href="#" id="mobile-menu-trigger" class="js-click-menu-trigger"><img src="/img/icons/navigation/menu.svg" alt="Menu"></a>
+  </div>
+</template>

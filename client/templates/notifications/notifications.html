@@ -1,0 +1,41 @@
+<template name="notificationList">
+	<div class="dropdown-content notification-dropdown-content">
+		<div class="dropdown-head">
+			<p class="text-right"><a href="#" class="js-read-all js-no-close">Mark all read</a></p>
+		</div>
+
+		<div class="slim-scroll js-scroll js-lazy-load-notifications">
+			<ul class="notification-list" id="notification-list">
+				{{#if instance.notifications.count}}
+					{{#each instance.notifications}}
+						{{> notificationItem}}
+					{{/each}}
+				{{else}}
+					<p class="no-notifications marg-v-m">You don't have any notifications.</p>
+				{{/if}}
+			</ul>
+
+			{{#if instance.state.get 'isLoading'}}
+				<div class="loading js-loading">
+					{{> spinner color='white'}}
+				</div>
+			{{else}}
+				{{#if hasMore}}
+					<div class="loading">
+						<p><a href="#" class="js-load-more js-no-close">more</a></p>
+					</div>
+				{{/if}}
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name="notificationItem">
+	<li class="{{#if read}}read{{/if}}">
+		<a href="#" class='js-notification-link'>
+			<span>{{message}}</span>
+			<span class="date">{{fromNow date}}</span>
+		</a><!--
+		-->{{#unless read}}<a href="#" class="checkable js-notification-check js-no-close text-center">&#10004;</a>{{/unless}}
+	</li>
+</template>

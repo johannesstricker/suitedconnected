@@ -1,0 +1,92 @@
+.shared-post-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: z('background');
+  background-color: $color-dark2;
+
+  @include respond-to('medium') {
+    &:after {
+      background-image: url('/img/backgrounds/vegas_strip.jpg');
+      background-size: cover;
+      background-position: center 65%;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 500px;
+      z-index: 1;
+      content: ' ';
+    }
+
+  }
+}
+.shared-not-available {
+  text-align: center;
+  padding: 50px 0;
+  h2 {
+    color: $color-light;
+    margin-bottom: 15px;
+  }
+}
+.shared-post-container {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  background-color: $color-dark2;
+  z-index: z('content');
+  padding: 25px 25px;
+  & > h2, & > h4 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    color: $color-highlight;
+  }
+  & > h4 {
+    margin-bottom: 15px;
+  }
+  .shared-post {
+    background-color: $color-background;
+  }
+  & > div {
+    max-width: 724px;
+    margin: auto;
+  }
+  #get-started {
+    display: none;
+  }
+  @include respond-to('medium') {
+    top: 300px;
+    min-height: 200px;
+
+    #get-started {
+      display: block;
+      background-color: $color-highlight;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px 75px;
+      transition: all .25s ease-in-out;
+      @include font-size(18px);
+      color: rgba($color-light, 0.75);
+      border-top-right-radius: 5px;
+  		border-top-left-radius: 5px;
+      text-transform: uppercase;
+      font-family: "DinPro Bold";
+      letter-spacing: 2px;
+      &:hover {
+        padding-bottom: 10px;
+        color: $color-light;
+      }
+    }
+  }
+  .head {
+    background-image: none;
+    background-color: $color-highlight;
+  }
+}

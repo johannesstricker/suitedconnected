@@ -1,0 +1,14 @@
+{
+  "PRODUCTION": false,
+  "AWSAccessKeyId" : "<AWS KEY>",
+  "AWSSecretAccessKey" : "<AWS SECRET>",
+  "AWSBucket" : "<AWS BUCKET>",
+  "AWSBucketImages": "<AWS BUCKET>",
+  "MAIL_URL": "smtp://online-poker+community:<apiKey>@smtp.mandrillapp.com:587",
+  "private": {
+    "mandrill": {
+        "user": "online-poker+community",
+        "apiKey": "<apiKey>"
+    }
+  }
+}

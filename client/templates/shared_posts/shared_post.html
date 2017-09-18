@@ -1,0 +1,14 @@
+<template name="sharedPost">
+	<div class="shared-post post-page">
+		{{> postHead}}
+
+		<div class="content-padding">
+			{{#if post.handhistory}}
+				{{> handHistory post.handhistory}}
+			{{/if}}
+
+			<p>{{{post.body}}}</p>
+			
+		</div>
+	</div>
+</template>

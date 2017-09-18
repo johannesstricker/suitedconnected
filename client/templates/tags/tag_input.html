@@ -1,0 +1,40 @@
+<template name="tagInput">
+		<div class="tag-input">
+			<!-- SELECTED TAGS -->
+			<div class="tag-list">
+				{{#each tags}}
+					<span class="tag tag-each tag-selectable">{{name}} 
+					<!-- <span class="remove">&#x2716;</span> -->
+					</span>
+				{{/each}}
+			</div>
+
+			<!-- INPUT FIELD -->
+			<div class="tag-input-field">
+				<input type="text" name="{{randomString}}" id="value" autocomplete="off" placeholder="{{placeholder}}"/>		
+			</div>
+
+			<!-- TYPEAHEAD -->
+			{{#if typeahead}}
+				<div class="suggestions">
+					{{#each typeahead}}
+						{{> suggestion tag=this showDescription=showDescription selected=selectedTagReference}}
+					{{/each}}
+				</div>
+			{{/if}}
+		</div>		
+
+</template>
+
+<template name="suggestion">
+	<span class="suggested-tag {{selectedClass}}">
+		<span class="name">
+			{{tag.name}}
+		</span>
+		{{#if showDescription}}
+			<span class="description">
+				{{tag.description}}
+			</span>
+		{{/if}}
+	</span>	
+</template>

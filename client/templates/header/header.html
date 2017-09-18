@@ -1,0 +1,66 @@
+<template name="header">
+	<div class="header outer-container">
+		<!-- LEFT MARGIN -->
+		<div class="margin">
+			<div class="primary"></div>
+			<div class="secondary"></div>
+		</div>
+
+		<!-- CENTER -->
+		<div class="inner-container">
+			<!-- MAIN -->
+			<div class="main">
+				<div class="primary navigation dropdown dropdown-hover group-dropdown">
+					<!-- NEWSFEED -->
+					<a href="{{pathFor 'index'}}" class="{{highlightActiveRoute 'index'}}">&#9776; Newsfeed</a>
+
+					<!-- GROUPS -->
+					<a href="#" class="{{highlightActiveRoute 'groupPage'}} {{#unless currentUser}}disabled{{/unless}} dropdown-toggle group-dropdown-toggle">&#10070; <span class="show-large">Private&nbsp;</span>Groups</a>
+
+					<!-- MY POSTS -->
+					<a href="#" class="{{highlightActiveRoute 'myPosts'}} disabled">&#10027; My Posts</a>
+
+					{{#if currentUser}}
+						{{> groupList}}
+					{{/if}}
+				</div>
+
+				<div class="secondary dropdown">
+					<div id="searchbar">{{> tagInput settings=tagInputSettings}}</div>
+
+					<!-- MOBILE MENU -->
+					<div id="mobile-menu-trigger" class="navigation dropdown-toggle"><a href="#">&#9776;</a></div>
+					<div id="mobile-menu" class="dropdown-content">
+						<a href="{{pathFor 'index'}}" class="{{highlightActiveRoute 'index'}}">&#9776; Newsfeed</a>
+						<a href="#" class="{{highlightActiveRoute 'groupPage'}} {{#unless currentUser}}disabled{{/unless}}">&#10070; Groups</a>
+						<a href="#" class="{{highlightActiveRoute 'myPosts'}} disabled">&#10027; My Posts</a>
+            <a href="#" class="js-click-logout">&#9776; Logout</a>
+					</div>
+				</div>
+
+				<div id="logo">{{notificationCount}}</div>
+			</div>
+
+			<!-- SIDEBAR -->
+			<div class="sidebar">
+				<div class="primary navigation dropdown dropdown-hover notification-dropdown">
+					<a href="#" class="{{highlightNotifications}} {{#unless currentUser}}disabled{{/unless}} dropdown-toggle">&#9751; Notifications</a>
+
+					{{> notificationList}}
+				</div>
+
+				<!-- PROFILE & ACCOUNT -->
+				<div class="secondary">
+					<div>
+						{{> userControl}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- RIGHT MARGIN -->
+		<div class="margin">
+			<div class="primary"></div>
+		</div>
+	</div>
+</template>

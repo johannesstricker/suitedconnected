@@ -1,0 +1,76 @@
+<template name="postPage">
+	<div class="post-page">
+		{{> postHead}}
+
+		<div>
+			{{> postBody}}
+
+			{{#each post.findComments}}
+				{{> commentItem}}
+			{{/each}}
+
+			<a href="{{pathFor 'postPage' _id=instance.previous.get}}" class="btn btn-primary js-scroll-btn {{previousClass}}" id="prvs-btn">&#10096;</a>
+			<a href="{{pathFor 'postPage' _id=instance.next.get}}" class="btn btn-primary js-scroll-btn {{nextClass}}" id="nxt-btn">&#10097;</a>
+
+			{{#if currentUser}}
+				{{> commentSubmit post=post comment=instance.editingComment}}
+			{{else}}
+				<p>Please log in to leave a comment.</p>
+			{{/if}}
+		</div>
+
+	</div>
+</template>
+
+<template name="postHead">
+	<div class="post-head head">
+		<img src="{{post.thumbnail 'large'}}" alt="{{post.author}}">
+
+		<div>
+			<p>submitted {{fromNow post.submitted}} by <a href="{{pathFor 'profile' _id=post.userId}}">{{post.author}}</a>{{#if post.isPrivate}} in <a href="{{pathFor 'groupPage' _id=post.findGroup._id}}">{{post.findGroup.name}}</a>{{/if}}</p>
+			<h3>{{post.title}}</h3>
+		</div>
+		<div class="tags">
+			{{#each post.findTags}}<span class="tag">{{name}}</span>{{/each}}
+		</div>
+	</div>
+</template>
+
+<template name="postBody">
+	<div class="post-body">
+		{{#if post.handhistory}}
+			{{#with post.handhistory}}
+				{{> handHistory}}
+			{{/with}}
+		{{/if}}
+
+		<p class="body">{{{post.body}}}</p>
+		<p class="comment-count color-secondary text-right">
+			{{#if post.canShare}}
+				{{#unless post.isShared}}
+					<span><a href="#" data-tooltip="Create a public link to the opening post." class="no-highlight-dark js-share-post">share</a></span>
+				{{/unless}}
+			{{/if}}
+			{{#if post.canDelete}}<span><a href="#" class="no-highlight-dark js-delete-post">delete</a></span>{{/if}}
+			{{#if post.canEdit}}<span><a href="{{pathFor 'postEdit' _id=post._id}}" class="no-highlight-dark">edit</a></span>{{/if}}
+			<span>
+				{{#if post.canUpvote}}
+					<a href="#" id="upvote" data-tooltip="Like this? Tip the author.">{{post.votes}} &#10084;</a>
+				{{else}}
+					{{post.votes}} &#10084;
+				{{/if}}
+			</span>
+			<span>{{post.commentCount}} &#9993;</span>
+			<span>{{post.views}} &#9737;</span>
+		</p>
+		{{#if AND post.canShare post.isShared}}
+			<div class="share-link">
+				<div class="input">
+					<input type="text" value="{{shareLink}}/" name="link" readonly="true" class="share-link js-select-input"/>
+					<a href="#" data-tooltip="Remove this link." class="unshare js-unshare-post">&#10005;</a>
+				</div>
+
+			</div>
+		{{/if}}
+	</div>
+</template>

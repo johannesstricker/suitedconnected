@@ -1,0 +1,181 @@
+.feed-head {
+  color: $color-secondary;
+  text-align: left;
+  position: relative;
+  margin-bottom: 15px;
+  @include respond-to('xsmall') {
+    margin-bottom: 25px;
+  }
+  @include respond-to('medium') {
+    margin-bottom: 30px;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    color: $color-secondary;
+    text-transform: none;
+  }
+
+  .feed-filter {
+    display: none;
+
+    @include respond-to('medium') {
+      & {
+        display: block;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        width: 120px;
+        padding: 0;
+        @include center();
+
+        .btn, .dropdown-content {
+          left: 10%;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+
+.post-list {
+  .spinner {
+    padding-bottom: 150px;
+    text-align: center;
+    width: 100%;
+  }
+  .padder {
+    margin-top: 30px;
+  }
+
+  .post {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 4px 0;
+    margin-bottom: 15px;
+    @include respond-to('small') {
+      padding: 10px 0;
+    }
+
+    div.author-thumbnail {
+      display: none;
+      flex: 0;
+      background-color: $color-primary;
+      @include respond-to('xsmall') {
+        & {
+          display: block;
+          margin-right: 10px;
+          width: 35px;
+          height: 35px;
+          flex-basis: 35px;
+          flex-grow: 0;
+          flex-shrink: 0;
+        }
+      }
+      @include respond-to('small') {
+        & {
+          display: block;
+          width: 40px;
+          height: 40px;
+          margin-right: 15px;
+          flex-basis: 40px;
+          flex-grow: 0;
+          flex-shrink: 0;
+        }
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .author {
+      color: $color-highlight;
+    }
+    .title {
+      color: $color-dark;
+      text-transform: none;
+      &:hover {
+        color: $color-dark;
+        text-decoration: underline;
+      }
+    }
+    .meta {
+        margin-top: 5px;
+        .tag {
+          margin-right: 1px;
+          @include respond-to('small') {
+            margin-right: 2px;
+          }
+        }
+    }
+
+    &.read {
+      opacity: 0.75;
+      &:hover {
+        opacity: 1;
+        img, p, h1,h2,h3,h4,h5,h6 {
+          opacity: 0.75;
+        }
+      }
+    }
+
+    // HOVER OVER THE POST
+    @include respond-to('small') {
+      &:before {
+        position: absolute;
+        top: 0;
+        right: 100%;
+        bottom: 0;
+        @include responsive-property(width, $main-margin);
+        content: ' ';
+        background-color: transparent;
+      }
+
+      &:hover {
+        background-color: $color-highlight;
+        &:before {
+          background-color: $color-highlight;
+        }
+        .author {
+          color: $color-light;
+        }
+        .title {
+          color: $color-dark;
+        }
+        a {
+          color: $color-light;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .tag-selectable {
+          color: $color-dark;
+          transition: color .25s ease-in-out;
+          &:hover {
+            color: $color-highlight;
+            background-color: $color-light;
+            border: 1px solid $color-light;
+          }
+        }
+      }
+    }
+
+
+    // ANIMATION ON INSERT / UPSERT
+    &.animate {
+      transition: top 500ms 0ms ease-in;
+    }
+  }
+}
+
+// ANIMATION WHEN POST APPEARS AT THE TOP
+.animate {
+  -webkit-transition: top 500ms 0ms ease-in;
+  -moz-transition: top 500ms 0ms ease-in;
+  -o-transition: top 500ms 0ms ease-in;
+  transition: top 500ms 0ms ease-in;
+}

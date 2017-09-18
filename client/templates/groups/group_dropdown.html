@@ -1,0 +1,9 @@
+<template name="groupDropdown">
+  <div class="group-dropdown dropdown dropdown-hover navigation-element {{ifnotecho currentUser 'disabled'}}">
+    <a href="#" class="dropdown-toggle navigation-link">
+      <img class="navigation-icon" src="/img/icons/navigation/groups.svg" alt="Newsfeed">
+      Private Groups
+    </a>
+    {{> groupList}}
+  </div>
+</template>

@@ -1,0 +1,27 @@
+<template name="newsfeed">
+	<div class="feed-head content-margin-top">
+		<h2>
+			{{#if currentUser}}
+				Welcome back to suitedconnected, {{currentUser.username}}.
+			{{else}}
+				Welcome to suitedconnected!
+			{{/if}}
+		</h2>
+
+		<div class="dropdown dropdown-hover feed-filter">
+			{{#if currentUser}}
+				<button class="btn btn-xs btn-dark dropdown-toggle">{{currentFeedName}} <span class="caret"></span></button>
+
+				<div class="dropdown-content">
+					<ul class="dropdown-list">
+						<li><a href="{{pathFor 'index'}}" class="dropdown-list-element dropdown-list-element-xs text-left">All</a></li>
+						<li><a href="{{pathFor 'private'}}" class="dropdown-list-element dropdown-list-element-xs text-left">Private</a></li>
+						<li><a href="{{pathFor 'public'}}" class="dropdown-list-element dropdown-list-element-xs text-left">Public</a></li>
+					</ul>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+
+	{{> postList}}
+</template>

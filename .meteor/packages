@@ -1,0 +1,51 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+session                 # Client-side reactive dictionary for your app
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+iron:router
+accounts-password
+check
+audit-argument-checks
+reactive-var
+digilord:faker
+underscorestring:underscore.string
+aldeed:collection2
+reywood:publish-composite
+momentjs:moment
+seba:minifiers-autoprefixer
+fourseven:scss
+summernote:summernote
+alanning:roles
+matb33:collection-hooks
+webtempest:animate
+cfs:standard-packages
+cfs:filesystem
+ostrio:meteor-root
+reactive-dict
+cfs:graphicsmagick
+cfs:s3
+tmeasday:publish-counts
+percolate:migrations
+email
+meteorhacks:ssr
+drewy:datetimepicker
+lookback:emails
+meteorhacks:inject-initial
+kevohagan:sweetalert
+spiderable
+fastclick
+meteorhacks:fast-render
+wylio:mandrill

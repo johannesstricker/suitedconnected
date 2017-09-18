@@ -1,0 +1,23 @@
+.authentication-dropdown-content {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    @include responsive-property(padding-left, $side-margin);
+    @include responsive-property(padding-right, $side-margin);
+    p:last-of-type {
+        margin-top: 10px;
+    }
+    .spinner-container {
+        height: 100%;
+        width: 100%;
+        @include center
+    }
+}
+.login, .registration, .forgot-password {
+    width: 100%;
+    .btn {
+        width: calc(50% - 5px);
+        &:first-of-type {
+            margin-right: 10px;
+        }
+    }
+}

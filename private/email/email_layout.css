@@ -1,0 +1,162 @@
+/*** COLORS ***/
+// $color-background: #f1f1f1;
+// $color-shade: #eeeeee;
+// $color-dark: #000000;
+// $color-light: #ffffff;
+// $color-primary: #313131;
+// $color-secondary: #9d9d9d;
+// $color-highlight: #b08654;
+// $color-highlight-dark: #957147;
+
+html, body {
+	background-color: #e0e0e0;
+	font-family: "Arial";
+}
+table, tr, td {
+	border: 0px solid #fff;
+	padding: 0;
+	margin: 0;
+}
+
+/** PADDER **/
+#padder {
+	max-width: 600px !important;
+	margin: auto;
+	padding: 25px;
+}
+#padder > * {
+	width: 100%;
+}
+
+/** CONTAINER **/
+#container {
+	background-color: #f1f1f1;
+	border: 1px solid #CCCCCC;
+}
+#container > tr {
+	width: 100%;
+}
+#container > tr > td {
+	width: 100%;
+}
+
+/** HEADER **/
+#header > td {
+	background-color: #b08654;
+	border-bottom: 2px solid #957147;
+}
+#header h1, #header h2, #header h3, #header h4, #header h5, #header h6 {
+	color: #fff;
+	font-weight: normal;
+	padding: 20px 20px;
+	padding-bottom: 10px;
+	margin: 0;
+}
+#title {
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+/** BODY **/
+#body > td {
+	text-align: left;
+	padding: 20px 25px;
+}
+
+
+/** BOTTOM **/
+p.copyright {
+	color: #9d9d9d;
+	margin: 2px;
+	padding: 0;
+	font-size: 90%;
+}
+
+/** TYPO **/
+p {
+	color: #313131;
+	line-height: 1.25;
+}
+h1,h2,h3,h4,h5,h6 {
+	color: #000;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+a {
+	text-decoration: none;
+	color: #b08654;
+}
+a:hover {
+	color: #957147
+}
+.italic {
+	font-style: italic;
+}
+.text-left {
+	text-align: left;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.upper {
+	text-transform: uppercase;
+}
+.lower {
+	text-transform: lowercase;
+}
+
+/** BUTTONS **/
+.btn {
+	padding: 15px 20px 15px 20px;
+	border-radius: 2px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.btn-primary {
+	background-color: #b08654;
+	color: #fff;
+	border-bottom: 2px solid #957147;
+}
+.btn-primary:hover {
+	background-color: #957147;
+}
+
+/** COMPONENTS **/
+.quote {
+	border-left: 5px solid #b08654;
+	padding-left: 10px;
+	margin: 5px 10px;
+	font-style: italic;
+}
+
+/** MARGIN AND PADDING **/
+.marg-s {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.marg-m {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.marg-l {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.pad-s {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.pad-m {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.pad-l {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.bold {
+	font-weight: bold;
+}

@@ -1,0 +1,111 @@
+<template name="handConverter">
+	{{> handHistory}}
+</template>
+
+<template name="handHistory">
+	<div class="handhistory small">
+
+		<!-- TABLE -->
+		<div class="paragraph table">
+			<div>
+				<div class="table-info">
+					<h3>{{table.client}}</h3><p> {{table.variant}} {{table.smallblind.toFixed 2}}{{table.currency}}/{{table.bigblind.toFixed 2}}{{table.currency}}{{#if table.ante}}/{{table.ante.toFixed 2}}{{table.currency}}{{/if}} - {{table.numPlayers}}max</p>
+				</div>
+				<div class="player-info">
+					{{#each players}}
+						<span class="player {{#if hero}}hero{{/if}} {{#if involved}}involved{{/if}}">
+							<div>
+								<h3>{{name}}</h3>
+								<p>{{chips.toFixed 2}}</p>
+							</div>
+							{{#if hero}}
+								<div class="player-cards">
+									{{> cards cards=cards}}
+								</div>
+							{{/if}}
+						</span>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+
+		<!-- PREFLOP -->
+		<div class="paragraph street preflop">
+			<div class="board">
+
+			</div>
+			<div class="actions">
+				<h3>Preflop <span class="potsize">{{preflop.pot.toFixed 2}}</span> <span class="players">({{preflop.players.length}} Players)</span></h3>
+				{{#with preflop.actions}}
+					{{> actions}}
+				{{/with}}
+			</div>
+		</div>
+
+		<!-- POSTFLOP -->
+		{{#each postflop}}
+			<div class="paragraph street postflop">
+				<div class="board">
+					{{> cards cards=board blanks=5}}
+				</div>
+				<div class="actions">
+					<h3>{{name}} <span class="potsize">{{pot.toFixed 2}}</span> <span class="players">({{players.length}} Players)</span></h3>
+					{{#with actions}}
+						{{> actions}}
+					{{/with}}
+				</div>
+			</div>
+		{{/each}}
+
+		<!-- SHOWDOWN -->
+		<div class="paragraph showdown">
+			<h3>Showdown <span class="potsize">{{showdown.pot.toFixed 2}}</span> <span class="players">({{showdown.players.length}} Players)</span></h3>
+			{{#if visible}}
+				<div class="spoiler animated fadeIn">
+					<div class="actions">
+						{{#each showdown.actions}}
+							{{>showdownAction}}
+						{{/each}}
+					</div>
+				</div>
+			{{else}}
+				<div class="text-center"><h3><a class="btn btn-primary" id="spoiler" href="#">Showdown</a></h3></div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<!-- CARDS -->
+<template name="cards">
+	{{#each fillWithBlanks cards blanks}}
+		<span class="card {{cardSuit this}}">{{cardRank this}}</span>
+	{{/each}}
+</template>
+
+<!-- SHOWDOWN ACTION -->
+<template name="showdownAction">
+	<div class="text-center">
+		<p>{{> cards cards=player.cards blanks=2}}</p>
+		<p class="{{winOrLoseClass}}">
+			{{player.name}} {{formattedAction}} and {{winOrLose}} {{value.toFixed 2}}
+		</p>
+	</div>
+</template>
+
+<!-- MULTIPLE ACTIONS -->
+<template name="actions">
+	<p>
+		{{#each preprocessedActions}}
+			{{#if last}}
+				{{> action}}
+			{{else}}
+				{{> action}},
+			{{/if}}
+		{{/each}}
+	</p>
+</template>
+
+<!-- ACTION -->
+<template name="action">
+	<span class="action {{actionClasses}}">{{formattedAction}}</span>
+</template>

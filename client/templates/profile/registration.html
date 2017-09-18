@@ -1,0 +1,33 @@
+<template name="registration">
+    <div class="registration">
+        <form id="registration-form">
+            <div class="{{errorClass 'username'}}">
+                <div class="input-addon">
+                    <span class="input-addon-item"><img src="/img/icons/user_01.svg" alt="Username"></span>
+                    <input class="input-addon-field" type="text" name="username-reg" placeholder="Choose a username between 3 and 12 characters.">
+                </div>
+                <p class="help-block">{{errorMessage 'username'}}</p>
+            </div>
+
+            <div class="{{errorClass 'email'}}">
+                <div class="input-addon">
+                    <span class="input-addon-item"><img src="/img/icons/email.svg" alt="Username"></span>
+                    <input class="input-addon-field" type="text" name="email-reg" placeholder="Enter your email address.">
+                </div>
+                <p class="help-block">{{errorMessage 'email'}}</p>
+            </div>
+
+            <div class="{{errorClass 'password'}}">
+                <div class="input-addon">
+                    <span class="input-addon-item"><img src="/img/icons/password.svg" alt="Username"></span>
+                    <input class="input-addon-field" type="password" name="password-reg" placeholder="Your password must be at least 6 characters long.">
+                </div>
+                <p class="help-block">{{errorMessage 'password'}}</p>
+            </div>
+
+            <p class="help-block {{errorClass 'registration'}}">{{errorMessage 'registration'}}</p>
+            <input type="button" value="Login" class="btn btn-default js-show-login js-no-close"><!--
+            --><input type="submit" value="Register" class="btn btn-primary js-no-close">
+        </form>
+    </div>
+</template>

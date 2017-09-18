@@ -1,0 +1,48 @@
+<template name="announcements">
+	<div class="announcements">
+		{{#if announcements.count}}
+			{{#each announcements}}
+				<div class="announcement">
+					<div class="{{#if currentUser.canAnnounce groupId}}can-announce{{/if}}">
+						<p class="body">{{body}}</p>
+						{{#if dueDate}}
+							<p class="date">DUE: {{formatDateTime dueDate}}</p>
+						{{/if}}
+					</div>
+					{{#if currentUser.canAnnounce groupId}}
+						<a href="#" class="js-delete-announcement delete" data-announcement-id="{{_id}}" data-tooltip="Remove this announcement.">&#10060;</a>
+					{{/if}}
+				</div>
+			{{/each}}
+		{{else}}
+			<p class="color-secondary marg-v-m">No current announcements.</p>
+		{{/if}}
+
+
+		{{#if currentUser.canAnnounce groupId}}
+			{{#if instance.isAnnouncing.get}}
+				{{> addAnnouncement groupId=groupId isAnnouncing=instance.isAnnouncing}}
+			{{else}}
+				<p class="text-right"><a href="#" class="no-highlight uppercase js-announce">add</a></p>
+			{{/if}}
+		{{/if}}
+	</div>
+</template>
+
+<template name="addAnnouncement">
+	<div class="add-announcement">
+		<p class="color-highlight">Add an announcement</p>
+		<div class="announcement-input">
+			<textarea name="announcement" class="js-input-announcement" rows="6" maxlength="{{instance.state.get 'maxInput'}}"></textarea>
+			<p>{{charactersLeft}} characters left</p>
+		</div>
+		<input type="text" class="js-datetime" placeholder="Add an optional due date...">
+		{{#if errorClass 'body'}}
+			<p class="{{errorClass 'body'}} text-left">{{errorMessage 'body'}}</p>
+		{{/if}}
+		<div class="text-right">
+			<a href="#" class="uppercase js-submit-announcement">save</a>
+			<a href="#" class="no-highlight uppercase js-cancel-announcement">cancel</a>
+		</div>
+	</div>
+</template>

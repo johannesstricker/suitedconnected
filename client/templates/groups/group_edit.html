@@ -1,0 +1,132 @@
+<template name="groupHead">
+	<div class="head head-margin">
+		{{#if group.canEdit}}<input name="thumbnail-file" class="thumbnail-file" type="file" accept="image/*" style="position: fixed; top: -100em"> {{/if}}
+		<div class="head-thumbnail">
+			<div>
+				<img src="{{group.thumbnail 'large'}}" alt="{{group.name}}">
+				{{#if group.canEdit}}<div class="edit js-click-thumbnail"></div>{{/if}}
+			</div>
+			<h4>{{group.name}}</h4>
+		</div>
+		<div class="nav-group">
+			<a href="{{pathFor 'groupPage' _id=group._id}}" class="{{#if routeNameIs 'groupPage'}}selected{{/if}}">Feed</a>
+			<a href="{{pathFor 'groupEdit' _id=group._id}}" class="{{#if routeNameIs 'groupEdit'}}selected{{/if}}">Overview</a>
+		</div>
+	</div>
+</template>
+
+<template name="groupInfoForm">
+	<form>
+		<textarea name="info" id="info-input">{{group.info}}</textarea>
+		<div class="text-right">
+			<input type="submit" value="Save" id="save-info" class="btn btn-primary">
+			<input type="button" value="Cancel" id="cancel-info" class="btn btn-default">
+		</div>
+	</form>
+</template>
+
+<template name="groupEdit">
+	{{> groupHead}}
+
+	<div class="group-edit">
+		<!-- INFO -->
+		<div>
+			<h4 class="inline">Info</h4>{{#if group.canEdit}}<p class="inline"><a href="#" id="edit-info" class="no-highlight-dark font-s"> edit</a></p>{{/if}}
+			{{#if editing}}
+				{{> groupInfoForm}}
+				<p class="has-error">{{errorMessage 'info'}}</p>
+			{{else}}
+				<p>
+					{{#if group.info}}
+						{{breaklines group.info}}
+					{{else}}
+						No information available.
+					{{/if}}
+				</p>
+			{{/if}}
+		</div>
+
+		<div>
+			<h4>Admins {{group.findOnlyAdmins.count}}</h4>
+			<div class="members">
+			{{#each group.findOnlyAdmins}}
+				{{> memberThumbnail}}
+			{{/each}}
+
+			{{#if showDroppables}}
+				{{#if group.canPromoteMemberToRole dragId 'admin'}}
+				<div class="grid-element droppable promote" data-role="admin">
+					<p data-role="admin" class="animated zoomIn">PROMOTE</p>
+				</div>
+				{{/if}}
+			{{/if}}
+			</div>
+		</div>
+
+		<div>
+			<h4>Moderators {{group.findOnlyModerators.count}}</h4>
+			<div class="members">
+			{{#each group.findOnlyModerators}}
+				{{> memberThumbnail}}
+			{{/each}}
+
+			{{#if showDroppables}}
+				{{#if group.canPromoteMemberToRole dragId 'moderator'}}
+				<div class="grid-element droppable promote" data-role="moderator">
+					<p data-role="moderator" class="animated zoomIn">PROMOTE</p>
+				</div>
+				{{/if}}
+			{{/if}}
+			</div>
+		</div>
+
+		<div>
+			<h4>Members {{group.findOnlyMembers.count}}</h4>
+			<div class="members">
+			{{#each group.findOnlyMembers}}
+				{{> memberThumbnail}}
+			{{/each}}
+
+			{{#if showDroppables}}
+				{{#if group.canPromoteMemberToRole dragId 'member'}}
+				<div class="grid-element droppable promote" data-role="member">
+					<p data-role="member" class="animated zoomIn">PROMOTE</p>
+				</div>
+				{{/if}}
+				{{#if group.canKick dragId}}
+				<div class="grid-element droppable kick">
+					<p class="animated zoomIn">KICK</p>
+				</div>
+				{{/if}}
+			{{/if}}
+			</div>
+		</div>
+
+		<div class="invitations">
+			<h4>Invitations {{group.findInvitations.count}}</h4>
+			{{> groupInvitations invitationContext}}
+
+			{{#if group.hasRole 'admin' currentUser._id}}<p class="text-center color-secondary uppercase marg-v-s">You can manage the group's members by drag and dropping them between roles.</p>{{/if}}
+		</div>
+
+		<div>
+			<h4>Statistics</h4>
+			<p><b>Active since:</b> {{formatDate group.createdAt}}</p>
+			<p><b>Members:</b> {{group.findMembers.count}}</p>
+			<p><b># Questions:</b> {{group.stats.postCount}}</p>
+			<p><b># Handhistories:</b> {{group.stats.handCount}}</p>
+			<p><b># Comments:</b> {{group.stats.commentCount}}</p>
+		</div>
+
+		<!-- OPTIONS -->
+		<div class="options text-right">
+			{{#if group.canLeave}}
+				<a href="#" class="btn btn-error js-leave-group">Leave Group</a>
+			{{/if}}
+			{{#if group.canDelete}}
+				<a href="#" class="btn btn-error js-delete-group">Delete Group</a>
+			{{/if}}
+		</div>
+	</div>
+</template>
+

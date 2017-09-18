@@ -1,0 +1,25 @@
+<template name="postList">
+		<div class="post-list">
+		  {{>postItemList}}
+
+			<div class="text-center pad-v-l">
+				{{#if ready}}
+				  {{#if nextPath}}
+				      <a href="{{nextPath}}" class="btn btn-primary" id="load-more">Load More</a>
+				  {{else}}
+				  		<p>That's all for now. Please come back later for more posts.</p>
+				  {{/if}}
+				{{else}}
+					{{> spinner}}
+				{{/if}}
+			</div>
+		</div>
+</template>
+
+<template name="postItemList">
+	<div class="post-item">
+		{{#each posts}}
+			{{> postItem}}
+		{{/each}}
+	</div>
+</template>

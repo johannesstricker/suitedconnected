@@ -1,0 +1,113 @@
+@font-face { font-family: 'DinPro Bold'; src: url('fonts/DINPro-Bold.otf') format('opentype'); }
+@font-face { font-family: 'DinPro Medium'; src: url('fonts/DINPro-Medium.otf') format('opentype'); }
+@font-face { font-family: 'DinPro Regular'; src: url('fonts/DINPro-Regular.otf') format('opentype'); }
+
+p, div, li, pre, fieldset, label, td, button, input, textarea, .btn, .sweet-alert > button {
+    font-family: 'DinPro Regular';
+    color: $color-primary;
+    @include font-size(12px);
+
+    @include respond-to('xsmall') {
+        @include font-size(14px);
+    }
+    @include respond-to('large') {
+        @include font-size(16px);
+    }
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'DinPro Bold';
+    color: $color-highlight;
+    text-transform: uppercase;
+    margin-bottom: 0.2em;
+}
+h1 {
+    font-family: 'DinPro Bold';
+    @include font-size(22px);
+    @include respond-to('xsmall') { @include font-size(28px); }
+    @include respond-to('large') { @include font-size(30px); }
+}
+h2 {
+    font-family: 'DinPro Bold';
+    @include font-size(18px);
+    @include respond-to('xsmall') { @include font-size(24px); }
+    @include respond-to('large') { @include font-size(26px); }
+}
+h3 {
+    font-family: 'DinPro Bold';
+    @include font-size(16px);
+    @include respond-to('xsmall') { @include font-size(20px); }
+    @include respond-to('large') { @include font-size(22px); }
+}
+h4 {
+    font-family: 'DinPro Bold';
+    @include font-size(14px);
+    @include respond-to('xsmall') { @include font-size(18px); }
+    @include respond-to('large') { @include font-size(20px); }
+}
+h5 {
+    font-family: 'DinPro Bold';
+    @include font-size(12px);
+    @include respond-to('xsmall') { @include font-size(16px); }
+    @include respond-to('large') { @include font-size(18px); }
+}
+h6 {
+    font-family: 'DinPro Bold';
+    @include font-size(11px);
+    @include respond-to('xsmall') { @include font-size(14px); }
+    @include respond-to('large') { @include font-size(16px); }
+}
+
+
+.small-font {
+    p, div, li, pre, fieldset, label, td, button, input, textarea, .btn, .sweet-alert > button {
+        @include font-size(10px);
+
+        @include respond-to('xsmall') {
+            @include font-size(12px);
+        }
+        @include respond-to('medium') {
+            @include font-size(14px);
+        }
+    }
+
+    h1 {
+        font-family: 'DinPro Bold';
+        @include font-size(20px);
+        @include respond-to('xsmall') { @include font-size(26px); }
+        @include respond-to('large') { @include font-size(28px); }
+    }
+    h2 {
+        font-family: 'DinPro Bold';
+        @include font-size(16px);
+        @include respond-to('xsmall') { @include font-size(22px); }
+        @include respond-to('large') { @include font-size(24px); }
+    }
+    h3 {
+        font-family: 'DinPro Bold';
+        @include font-size(14px);
+        @include respond-to('xsmall') { @include font-size(18px); }
+        @include respond-to('large') { @include font-size(20px); }
+    }
+    h4 {
+        font-family: 'DinPro Bold';
+        @include font-size(12px);
+        @include respond-to('xsmall') { @include font-size(16px); }
+        @include respond-to('large') { @include font-size(18px); }
+    }
+    h5 {
+        font-family: 'DinPro Bold';
+        @include font-size(11px);
+        @include respond-to('xsmall') { @include font-size(14px); }
+        @include respond-to('large') { @include font-size(16px); }
+    }
+    h6 {
+        font-family: 'DinPro Bold';
+        @include font-size(10px);
+        @include respond-to('xsmall') { @include font-size(12px); }
+        @include respond-to('large') { @include font-size(14px); }
+    }
+}
+
+.strong, strong {
+    font-weight: bold;
+}

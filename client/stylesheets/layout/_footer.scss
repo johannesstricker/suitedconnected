@@ -1,0 +1,64 @@
+.footer {
+  opacity: 0.85;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: z('navigation');
+  background-color: $color-dark;
+  overflow: hidden;
+  height: 36px;
+  transition: height .5s ease-in-out;
+
+   /* Hack to prevent scroll-flickering. */
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+
+
+  &:hover {
+    height: 250px;
+
+    .arrow {
+      background-image: url('/img/icons/arrow_down.png');
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    color: $color-light;
+  }
+  p, li {
+    color: $color-secondary;
+  }
+   
+  .arrow {
+    background-image: url('/img/icons/arrow_up.png');
+    background-repeaT: no-repeat;
+    background-position: center;
+    background-size: 24px auto;
+    height: 36px;
+    opacity: 0.25;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 5px 50px 25px 50px;
+    margin: auto;
+    max-width: $max-width-content;
+
+    .sitemap {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      flex-wrap: wrap;
+
+      & > div {
+        margin-left: 25px;
+      }
+    }
+  }
+}

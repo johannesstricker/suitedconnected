@@ -1,0 +1,54 @@
+<template name="mobileMenu">
+  <a class="mobile-overlay overlay js-click-overlay"></a>
+
+  <!-- POST BUTTONS: CAN POST? -->
+  {{#if canPost}}
+    <div id='mobile-post-buttons' class="{{showPostButtons}}">
+      <a href="{{pathFor 'postSubmit' groupId=groupId}}" class="btn btn-primary post-btn">
+        <img src="/img/icons/buttons/discussion.svg">
+      </a>
+      <a href="{{pathFor 'postSubmitHand' groupId=groupId}}" class="btn  btn-primary post-btn">
+        <img src="/img/icons/buttons/cards.svg">
+      </a>
+    </div>
+  {{/if}}
+
+  <div class="mobile-menu vertical-container">
+    <!-- PROFILE -->
+    <div class="vertical-container-row profile">
+      {{> Template.dynamic template=getAccountTemplate}}
+    </div>
+
+    <!-- CONTENT -->
+    <div class="vertical-container-row span">
+      <div class="absolute-inner-container {{activateNotificationLoad}}">
+
+        {{#if showCurrentContent 'mobileMenuItems'}}
+        <!-- MENU -->
+        <div class="mobile-menu-content" id="mobileMenuItems">
+              {{> mobileMenuItems}}
+        </div>
+        {{/if}}
+
+        {{#if showCurrentContent 'notificationList'}}
+        <!-- NOTIFICATIONS -->
+        <div class="mobile-menu-content" id="notificationList">
+              {{> notificationList}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="mobile-menu-tabs vertical-container-row">
+      <div class="tabs">
+        <a class="tab js-change-tab js-no-close {{highlightCurrentTab 'mobileMenuItems'}}" data-tab="mobileMenuItems" href="#">
+          <img src="/img/icons/navigation/mobile_menu.svg" alt="Menu">
+        </a>
+        <a class="tab js-change-tab js-no-close {{#unless currentUser}}disabled{{/unless}} {{highlightCurrentTab 'notificationList'}}" data-tab="notificationList" href="#">
+          <img src="/img/icons/notification.svg" alt="Notifications">
+        </a>
+      </div>
+    </div>
+  </div>
+</template>

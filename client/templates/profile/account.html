@@ -1,0 +1,82 @@
+<template name="account">
+	<div class="account">
+		{{#if isCurrentUser}}
+			{{>accountHead user=user headline='Your Account'}}
+		{{else}}
+			{{>accountHead user=user}}
+		{{/if}}
+
+		{{> accountBody bodyContext}}
+
+		{{> postList}}
+	</div>
+</template>
+
+<template name="accountHead">
+	<div class="head head-margin">
+		{{#if headline}}<h2 class="your-account">{{headline}}</h2>{{/if}}
+		{{#if user.canEdit}}<input name="thumbnail-file" class="thumbnail-file" type="file" accept="image/*" style="position: fixed; top: -100em"> {{/if}}
+		<div class="head-thumbnail">
+			<div>
+				<img src="{{user.thumbnail 'large'}}" alt="{{user.username}}">
+				{{#if user.canEdit}}<div class="edit js-click-thumbnail"></div>{{/if}}
+			</div>
+			<h4>{{user.username}}</h4>
+		</div>
+	</div>
+</template>
+
+<template name="accountBody">
+	<div class="account-body">
+		<div class="paragraph">
+			<h4 class="inline">About me</h4>{{#if canEdit}}<p class="inline"><a href="#" id="edit-info" class="no-highlight-dark font-s"> edit</a></p>{{/if}}
+
+			{{#if editing}}
+				{{> profileInfoForm}}
+			{{else}}
+				<p id="info">
+					{{#if profile.bio}}
+						{{breaklines profile.bio}}
+					{{else}}
+						No information available.
+					{{/if}}
+				</p>
+			{{/if}}
+		</div>
+
+		<div class="paragraph">
+			<h4>Statistics</h4>
+			<p><b>Active since:</b> {{formatDate createdAt}}</p>
+			<p><b>Chipstack:</b> {{stats.stack}}</p>
+			<p><b>#Questions asked:</b> {{stats.postCount}}</p>
+			<p><b>#Handhistories posted:</b> {{stats.handCount}}</p>
+			<p><b>#Comments posted:</b> {{stats.commentCount}}</p>
+		</div>
+
+		{{#if isCurrentUser}}
+			<div class="paragraph">
+				<h4>Change you password</h4>
+				{{> changePassword}}
+			</div>
+		{{/if}}
+
+<!-- 		{{#if isCurrentUser}}
+			{{> accountSettings}}
+		{{/if}} -->
+
+		<div class="paragraph">
+			<h4>Latest posts by {{username}}</h4>
+		</div>
+	</div>
+</template>
+
+<template name="profileInfoForm">
+	<form>
+		<textarea name="info-input" id="info-input">{{profile.bio}}</textarea>
+		<div class="text-right">
+			<input type="submit" value="Save" id="save-info" class="btn btn-primary">
+			<input type="button" value="Cancel" id="cancel-info" class="btn btn-default">
+		</div>
+	</form>
+</template>
+

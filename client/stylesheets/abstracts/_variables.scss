@@ -1,0 +1,127 @@
+/*** COLORS ***/
+$color-background: #f1f1f1;
+$color-shade: #eeeeee;
+$color-dark: #000000;
+$color-dark2: #232227;
+$color-light: #ffffff;
+$color-primary: #313131;
+$color-secondary: #9d9d9d;
+$color-highlight: #b08654;
+
+/** Alerts **/
+$error: #A43131;
+$warning: #F0AD4E;
+$success: #556E06;
+
+/** Cards **/
+$diamond: #00abc8;
+$club: #7bdb24;
+$spade: #313131;
+$heart: #e5084c;
+$blank: #c8c8c8;
+
+
+/*** BREAKPOINTS, SIZES AND SPACINGS ***/
+/* Main */
+$main-content-width: (
+	'default': calc(100% - 30px),
+	'xsmall': 560px,
+	'small': 500px,
+	'medium': 560px,
+	'large': 640px
+);
+$main-margin: (
+	'default': auto,
+	'small': 30px,
+	'medium': 120px,
+	'large': 120px
+);
+$main-container-width: (
+	'default': 100%,
+	'small': map-get($main-content-width, 'small') + map-get($main-margin, 'small') + map-get($main-margin, 'small'),
+	'medium': map-get($main-content-width, 'medium') + map-get($main-margin, 'medium') + map-get($main-margin, 'medium'),
+	'large': map-get($main-content-width, 'large') + map-get($main-margin, 'large') + map-get($main-margin, 'large')
+);
+
+/* Sidebar */
+$side-content-width: (
+	'default': 0px,
+	'small': 226px,
+	'medium': 280px,
+	'large': 330px
+);
+$side-margin: (
+	'default': 0px,
+	'small': 17px,
+	'medium': 25px,
+	'large': 30px
+);
+$side-container-width: (
+	'default': 0%,
+	'small': map-get($side-content-width, 'small') + map-get($side-margin, 'small') + map-get($side-margin, 'small'),
+	'medium': map-get($side-content-width, 'medium') + map-get($side-margin, 'medium') + map-get($side-margin, 'medium'),
+	'large': map-get($side-content-width, 'large') + map-get($side-margin, 'large') + map-get($side-margin, 'large')
+);
+
+/* Breakpoints */
+$breakpoint-thresholds: (
+	'xsmall': 600px,
+	'small': map-get($main-container-width, 'small') + map-get($side-container-width, 'small') + 25px, // TODO: figure out why this is needed
+	'medium': map-get($main-container-width, 'medium') + map-get($side-container-width, 'medium') + 25px, // TODO: figure out why this is needed
+	'large': 2560px
+);
+$breakpoints: (
+	'xsmall': (min-width: map-get($breakpoint-thresholds, 'xsmall')),
+	'small': (min-width: map-get($breakpoint-thresholds, 'small')),
+	'medium': (min-width: map-get($breakpoint-thresholds, 'medium')),
+	'large': (min-width: map-get($breakpoint-thresholds, 'large'))
+);
+
+/* Outmost Container */
+$container-width: (
+	'default': map-get($main-container-width, 'default') + map-get($side-container-width, 'default'),
+	'small': map-get($main-container-width, 'small') + map-get($side-container-width, 'small'),
+	'medium': map-get($main-container-width, 'medium') + map-get($side-container-width, 'medium'),
+	'large': map-get($main-container-width, 'large') + map-get($side-container-width, 'large')
+);
+
+$navigation-height-small: 40px;
+$primary-navigation-height: 64px;
+$secondary-navigation-height: 56px;
+$total-navigation-height: $primary-navigation-height + $secondary-navigation-height;
+
+$paragraph-spacing: 50px;
+
+$z-layers: (
+	'background': -100,
+	'content': 100,
+	'loader': 500,
+	'navigation': 1000,
+	'dropdown': 10000,
+	'modal': 100000
+);
+
+/** DEPRECATED */
+$max-width-content: 1100px;
+$min-width-content: 540px;
+
+$spacing-top: 50px;
+$spacing-bottom: 125px;
+$spacing-left: (
+	'default': 25px,
+	'small': 25px,
+	'medium': 60px,
+	'large': 120px
+);
+$spacing-left-ext: (
+	'default': 75px,
+	'small': 75px,
+	'medium': 110px,
+	'large': 170px
+);
+$spacing-right: (
+	'default': 25px,
+	'small': 25px,
+	'medium': 60px,
+	'large': 120px
+);

@@ -1,0 +1,42 @@
+<template name="landingPage">
+    <div class="landing-page js-move-mouse">
+<!--         <div id="background">
+            <div class="particles" id="particles-background"></div>
+            <div class="particles" id="particles-foreground"></div>
+        </div> -->
+
+        <div class="container no-height">
+            {{> Template.dynamic template=instance.accountTemplate.get}}
+        </div>
+
+        <div class="anchor viewport">
+            <div id="mobile-menu">
+              <a href="#" id="registration" class="js-goto-login" data-template="landingPageRegistration">Register</a><!--
+              --><a href="#" id="login" class="js-goto-login" data-template="landingPageLogin">Login</a>
+            </div>
+            <div class="padder"></div>
+            <div class="fixed-padder"><div></div></div>
+            <div>
+              {{> landingPageCommunity}}
+            </div>
+        </div>
+
+        <div class="anchor viewport">
+            <div>
+              {{> landingPageFeatures}}
+            </div>
+        </div>
+
+        <div class="anchor viewport">
+            <div>
+              {{> landingPageNewsletter template=instance.accountTemplate.get}}
+            </div>
+            <div class="landing-footer"></div>
+        </div>
+
+        <!-- 		<div class="anchor viewport">
+	 		{{> landingPageNews}}
+	 		<div class="landing-footer"></div>
+		</div>	 -->
+    </div>
+</template>

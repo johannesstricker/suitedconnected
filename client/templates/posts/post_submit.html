@@ -1,0 +1,76 @@
+<template name="postSubmit">
+	<div class="content-margin content-margin-top post-submit">
+		<form class="main form page">
+			<h4>Submit a new {{#if submitHandhistory}}handhistory{{else}}post{{/if}} in {{currentGroup}}</h4>
+
+			<div class="form-row">
+				<!-- TITLE -->
+				<div class="form-group span {{errorClass 'title'}}">
+					<label class="control-label" for="title">Title</label>
+					<div class="controls">
+						<input type="text" maxlength="{{maxTitleLength}}" autocomplete="off" name="{{randomString}}" id="title" value="" placeholder="Enter a descriptive title" />
+					</div>
+					<span class="help-block">{{errorMessage 'title'}}</span>
+				</div>
+			</div>
+
+			<!-- HANDHISTORY -->
+			{{#if submitHandhistory}}
+				<div class="form-group {{errorClass 'handhistory'}}">
+					<label class="control-label" for="handhistory-input">Handhistory</label>
+
+					<div class="">
+						<div class="controls">
+							<input type="text" autocomplete="off" placeholder="Paste your handhistory here..." id="handhistory-input" name="{{randomString}}" />
+							<!-- <textarea id="handhistory-input" name="handhistory-input"></textarea> -->
+						</div>
+
+						{{#if handhistory}}
+							<div class="span handhistory-preview">
+								{{#with handhistory}}
+									{{> handHistory}}
+								{{/with}}
+							</div>
+						{{/if}}
+					</div>
+
+					<span class="help-block">{{errorMessage 'handhistory'}}</span>
+				</div>
+			{{/if}}
+
+
+			<!-- BODY -->
+			<div class="form-group {{errorClass 'body'}}">
+				<label for="body" class="control-label">Content</label>
+				<div class="controls">
+					{{> richText id='body'}}
+
+					<span class="help-block">{{errorMessage 'body'}}</span>
+				</div>
+			</div>
+
+			<!-- TAGS -->
+			<div class="form-group {{errorClass 'tagIds'}}">
+				<label for="value" class="control-label">Tags</label>
+				<div class="controls">
+					{{> tagInput settings=tagInputSettings}}
+					<span class="help-block">{{errorMessage 'tagIds'}}</span>
+				</div>
+			</div>
+
+			<!-- <div class="form-group"><span class="help-block has-error">{{publicPostWarning}}</span></div> -->
+
+			<div class="text-right">
+				<input type="submit" value="Submit in {{currentGroup}}" class="btn-primary btn" />
+			</div>
+		</form>
+
+		<div class="preview"><p>
+			{{preview}}
+		</p></div>
+	</div>
+</template>
+
+<template name="postSubmitHand">
+	{{> postSubmit extendContext submitHandhistory=true}}
+</template>

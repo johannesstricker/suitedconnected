@@ -1,0 +1,11 @@
+.group-join {
+	@include responsive-property(padding-left, $spacing-left);
+	@include responsive-property(padding-right, $spacing-right);
+
+	h1,h2,h3,h4,h5,h6 {
+		color: $color-highlight;
+	}
+	p {
+		
+	}
+}

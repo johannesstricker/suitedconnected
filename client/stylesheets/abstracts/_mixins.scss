@@ -1,0 +1,110 @@
+/*** FONTS AND TYPOGRAPHY ***/
+@mixin font-size($size) {
+  font-size: $size;
+  // font-size: calculateRem($size);
+}
+@mixin center() {
+	/* Fallback */
+	display: block;
+	text-align: center;
+
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin noHighlightLink() {
+	a {
+		color: rgba($color-light, 0.5);
+		&:hover {
+			color: $color-light;
+		}
+	}
+}
+@mixin justify() {
+	text-align: justify;
+    hyphens: auto;
+}
+
+/*** COLORS ***/
+@mixin horizontal-gradient($start, $end) {
+  background: -moz-linear-gradient(top,  $start 0%, $end 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  $start 0%, $end 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  $start 0%, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start', endColorstr='$end',GradientType=0 ); /* IE6-9 */
+}
+
+/*** BACKGROUNDS ***/
+@mixin vertical-line($start, $end, $color) {
+	&:after {
+		content: "";
+		position: absolute;
+		top: $start;
+		bottom: $end;
+		left: 50%;
+		border-left: 1px solid $color;
+	}
+}
+
+/*** BREAKPOINTS, SIZES AND SPACING ***/
+@mixin respond-to($breakpoint) {
+	$raw-query: map-get($breakpoints, $breakpoint);
+
+	@if $raw-query {
+		$query: if(
+			type-of($raw-query) == 'string',
+			unquote($raw-query),
+			inspect($raw-query)
+		);
+
+		@media #{$query} {
+			@content;
+		}
+	} @else {
+		@error 'No value found for `#{$breakpoint}`. Please make sure it`s defined.';
+	}
+}
+
+@mixin pad-left() {
+	padding-left: map-get($spacing-left, default);
+
+	@include respond-to(small) {
+		padding-left: map-get($spacing-left, small);
+	}
+	@include respond-to(medium) {
+		padding-left: map-get($spacing-left, small);
+	}
+	@include respond-to(large) {
+		padding-left: map-get($spacing-left, small);
+	}
+}
+
+@mixin responsive-property($property, $value-map) {
+	$default-value: map-get($value-map, 'default');
+
+	@if $default-value {
+		#{$property}: $default-value;
+	}
+
+	@each $bp, $query in $breakpoints {
+		$value: map-get($value-map, $bp);
+		@if $value {
+			@include respond-to($bp) {
+				#{$property}: $value;
+			}
+		}
+	}
+}
+
+@mixin content-margin() {
+	@include responsive-property(margin-left, $spacing-left);
+	@include responsive-property(margin-right, $spacing-right);
+	margin-top: $spacing-top;
+	margin-bottom: $spacing-bottom;
+}
+@mixin content-padding() {
+	@include responsive-property(padding-left, $spacing-left);
+	@include responsive-property(padding-right, $spacing-right);
+	padding-top: $spacing-top;
+	padding-bottom: $spacing-bottom;
+}
+

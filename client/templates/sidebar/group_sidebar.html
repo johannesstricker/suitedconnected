@@ -1,0 +1,32 @@
+<template name="groupSidebar">
+	<div class="sidebar-element">
+		<h4>Group Member</h4>
+		<div class="members grid">
+			{{#each group.findMembers}}
+				{{> memberThumbnail extendContext includeLink=true}}
+			{{/each}}
+		</div>
+	</div>
+
+	{{> deals}}
+</template>
+
+<template name="memberThumbnail">
+	<div class="grid-element">
+		{{#if showMemberInfo}}
+			{{> userPreview userId=_id}}
+		{{/if}}
+
+		{{#if includeLink}}
+			<a href="{{pathFor 'profile'}}">
+				<img draggable="true" class="js-user-drag js-user-hover thumb-size-m" id="{{_id}}" src="{{thumbnail 'large'}}" alt="{{username}}">
+			</a>
+		{{else}}
+			<img draggable="true" class="js-user-drag js-user-hover thumb-size-m" id="{{_id}}" src="{{thumbnail 'large'}}" alt="{{username}}">
+		{{/if}}
+	</div>
+</template>
+
+<template name="memberInfo">
+	<p class="member-info fade-in-out">{{username}}</p>
+</template>

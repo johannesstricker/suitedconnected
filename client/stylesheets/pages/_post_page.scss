@@ -1,0 +1,170 @@
+.post-page {
+  position: relative;
+  #prvs-btn, #nxt-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transition: opacity .25s ease-in-out;
+
+    &.invisible {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  #prvs-btn {
+    right: 100%;
+  }
+  #nxt-btn {
+    left: 100%;
+  }
+
+  img.icon {
+    width: 25px;
+    height: auto;
+    display: inline-block;
+  }
+}
+.post-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  @include respond-to('xsmall') {
+    margin-bottom: 20px;
+  }
+  @include respond-to('medium') {
+    margin-bottom: 25px;
+  }
+
+  h1,h2,h3,h4,h5,h6,p {
+    color: $color-light;
+    text-transform: none;
+    font-family: "DinPro Medium";
+  }
+  p {
+    font-family: 'DinPro Regular';
+  }
+  & > img {
+    display: none;
+    @include respond-to('xsmall') {
+      display: block;
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  }
+  .tags {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    .tag {
+      margin-left: 10px;
+      background-color: $color-background !important;
+    }
+    .tag-selectable:hover {
+      color: $color-highlight;
+    }
+  }
+}
+.post-body {
+  @include justify();
+  margin-bottom: 20px;
+  @include respond-to('xsmall') {
+    margin-bottom: 30px;
+  }
+  @include respond-to('small') {
+    margin-bottom: 40px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .comment-count {
+    margin: 20px 0 5px 0;
+  }
+}
+.comment-item {
+  background-color: $color-light;
+  padding: 9px;
+  @include respond-to('xsmall') {
+    padding: 16px 24px 16px 24px;
+  }
+  @include respond-to('small') {
+    padding: 20px 30px 20px 30px;
+  }
+  margin: 8px 0;
+
+  div.title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+
+    & > img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      display: block;
+      flex-shrink: 0;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .author {
+    flex-grow: 1;
+    padding: 0;
+    font-family: 'DinPro Medium';
+  }
+  .body {
+    margin-bottom: 5px;
+  }
+  p {
+    @include justify();
+  }
+}
+
+.comment-form {
+  margin-top: 50px;
+}
+
+.share-link {
+  .input {
+    position: relative;
+  }
+  input {
+    padding: 0px 15px 0px 2px;
+    @include font-size(14px);
+    border: 1px solid $color-secondary;
+    color: $color-highlight;
+    margin-top: 0;
+  }
+
+  label {
+    color: $color-secondary;
+    margin-bottom: 0;
+  }
+
+  .unshare {
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include center();
+    padding-right: 5px;
+    color: $color-secondary;
+    &:hover {
+      color: $color-highlight;
+    }
+  }
+}
+

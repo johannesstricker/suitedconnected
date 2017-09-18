@@ -1,0 +1,39 @@
+.input-addon {
+  display: flex;
+}
+
+.input-addon-field,
+.input-addon-item {
+  border: 1px solid $color-secondary;
+  padding: .5em .75em;
+
+  &:first-child {
+    border-radius: 2px 0 0 2px;
+  }
+  &:last-child {
+    border-radius: 0 2px 2px 0;
+  }
+  &:not(:first-child) {
+    border-left: 0;
+  }
+}
+.input-addon-item {
+  background-color: $color-shade;
+  @include center();
+
+  img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+
+    @include respond-to('xsmall') {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.input-addon-field, input.input-addon-field {
+  flex: 1;
+  margin: 0;
+  line-height: normal;
+}

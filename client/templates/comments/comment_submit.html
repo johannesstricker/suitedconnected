@@ -1,0 +1,27 @@
+<template name="commentSubmit">
+	<form name="comment" class="comment-form form">
+
+		<!-- INPUT -->
+		<div class="form-group {{errorClass 'body'}}">
+			<div class="controls">
+				{{#if isEditing}}
+					<label for="comment-body">Edit your comment</label>
+					{{> richText id='comment-body' value=comment.get.body}}
+				{{else}}
+					<label for="comment-body">Comment on this post</label>			
+					{{> richText id='comment-body'}}
+				{{/if}}
+				<span class="help-block">{{errorMessage 'body'}}</span>
+			</div>
+		</div>
+
+		<!-- BUTTONS -->
+		{{#if isEditing}}
+			<button type="submit" class="btn btn-primary">Save Changes</button>
+			<a href="#" class="btn btn-default js-cancel-edit">Cancel</a>
+		{{else}}
+			<button type="submit" class="btn btn-primary">Add Comment</button>
+		{{/if}}
+		
+	</form>
+</template>

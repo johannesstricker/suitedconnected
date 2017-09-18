@@ -1,0 +1,11 @@
+<template name="groupJoin">
+	{{> groupHead group=group}}
+	<div class="group-join">
+		<h4>You have been invited to join {{group.name}}.</h4>
+		<p>Would you like to accept your invitation?</p>
+		<div class="text-right">
+			<a href="#" class="btn btn-primary accept-invitation">Join</a>
+			<a href="#" class="btn btn-default decline-invitation">Decline</a>
+		</div>
+	</div>
+</template>

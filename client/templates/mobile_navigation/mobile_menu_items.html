@@ -1,0 +1,29 @@
+<template name="mobileMenuItems">
+  <a href="{{pathFor 'index'}}" class="menu-item selected">
+    <img class="navigation-icon" src="/img/icons/navigation/newsfeed.svg" alt="Newsfeed"> Newsfeed
+  </a>
+  <a href="{{pathFor 'myPosts'}}" class="menu-item {{ifnotecho currentUser 'disabled'}}">
+    <img class="navigation-icon" src="/img/icons/navigation/posts.svg" alt="My Posts"> My Posts
+  </a>
+  <a href="#" class="menu-item js-no-close {{ifnotecho currentUser 'disabled'}}">
+    <img class="navigation-icon" src="/img/icons/navigation/groups.svg" alt="Private Groups"> Private Groups
+  </a>
+  {{#if currentUser.findGroups.count}}
+    {{#each currentUser.findGroups}}
+      <a href="{{pathFor 'groupPage'}}" class="menu-sub-item">
+        <img src="{{thumbnail 'small'}}" alt="{{name}}" class="thumbnail-element-img thumb-size-s"> {{name}}
+      </a>
+    {{/each}}
+  {{else}}
+  {{#each currentUser.findGroups}}
+      <p class="menu-sub-item">
+        You are not a member of any groups, yet.
+      </p>
+    {{/each}}
+  {{/if}}
+  {{#if currentUser}}
+    <a href="#" class="menu-item js-click-logout js-no-close">
+      <img class="navigation-icon" src="/img/icons/navigation/logout.svg" alt="Logout"> Logout
+    </a>
+  {{/if}}
+</template>

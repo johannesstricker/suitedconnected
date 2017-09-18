@@ -1,0 +1,52 @@
+.error-list {
+  position: fixed;
+  bottom: 0;
+  @include responsive-property(width, $container-width);
+  margin: auto;
+  z-index: z('modal');
+  pointer-events: none;
+  text-align: right !important;
+  @include responsive-property(padding-left, $side-margin);
+  @include responsive-property(padding-right, $side-margin);
+
+  .error-item {
+    text-align: left;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    @include respond-to('small') {
+      width: map-get($side-content-width, 'small');
+    }
+    @include respond-to('medium') {
+      width: map-get($side-content-width, 'medium');
+    }
+    @include respond-to('large') {
+      width: map-get($side-content-width, 'large');
+    }
+
+    background-color: rgba($color-highlight, 0.95);
+    border-radius: 2px;
+    padding: 5px 10px 5px 45px;
+    margin: 25px auto;
+
+    background-image: url('/img/icons/error.svg');
+    background-size: 25px 25px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+
+    max-width: map-get($main-content-width, 'default');
+    @include respond-to('xsmall') {
+      max-width: map-get($main-content-width, 'xsmall');
+    }
+    @include respond-to('small') {
+      margin: 15px 0 15px auto;
+    }
+
+    p {
+      color: $color-light !important;
+      @include font-size(14px);
+      display: inline-block;
+      width: calc(100% - 35px);
+    }
+  }
+}

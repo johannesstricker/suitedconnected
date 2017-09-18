@@ -1,0 +1,77 @@
+.feedback {
+	display: none;
+	left: -400px;
+	transition: left 0.75s ease-in-out;
+}
+@media (min-width: map-get($breakpoint-thresholds, 'small') + 75px) {
+	.feedback {
+		display: block;
+		padding: 15px;
+		position: fixed;
+		z-index: z(modal);
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: $color-highlight;
+		width: 400px;
+
+		&.visible {
+			left: 0;
+		}
+		& > .trigger {
+			display: inline-block;
+			background-color: $color-highlight;
+			position: absolute;
+			left: 100%;
+			top: 0;
+			bottom: 0;
+			width: 25px;
+			cursor: pointer;
+			background-image: url('/img/misc/feedback_title.png');
+			background-position: left center;
+			background-repeat: no-repeat;
+			background-size: 20px auto;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+		&.visible .trigger {
+			cursor: auto;
+		}
+
+		& > form {
+			display: block;
+			height: 100%;
+			width: 100%;
+
+			#feedback {
+				height: 110px;
+				resize: none;
+				margin: 5px 0 5px 0;
+				border: 1px solid $color-dark2 !important;
+				@include font-size(14px);
+			}
+		}
+		p {
+			color: $color-light;
+			@include font-size(14px);
+		}
+		h1,h2,h3,h4,h5,h6 {
+			color: $color-dark2;
+			margin-bottom: 5px;
+		}
+		.btn {
+			display: inline-block;
+			width: 75px;
+			border: 0px !important;
+			&.btn-dark {
+				background-color: lighten($color-dark2, 3%);
+				&:hover {
+					background-color: $color-dark2;
+				}
+				&:active {
+					background-color: darken($color-dark2, 3%);
+				}
+			}
+
+		}
+	}
+}

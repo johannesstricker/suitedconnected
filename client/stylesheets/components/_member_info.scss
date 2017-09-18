@@ -1,0 +1,35 @@
+.members > div, .user-grid > div {
+	position: relative;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.member-info {
+	z-index: z(modal);
+	background-color: $color-highlight;
+	color: $color-light;
+	position: absolute;
+	left: 50%;
+	top: 0%;
+	transform: translate(-50%, -105%);
+	text-align: center;
+	padding: 5px 10px;
+	border: 1px solid $color-light;
+	animation: fadein .5s;
+
+	&:after {
+		z-index: z(modal);
+	    content:'';
+	    position: absolute;
+	    top: 95%;
+	    left: 0;
+	    right: 0;
+	    margin: 0 auto;
+	    width: 0;
+	    height: 0;
+	    border-top: solid 10px $color-highlight;
+	    border-left: solid 10px transparent;
+	    border-right: solid 10px transparent;
+	}
+}

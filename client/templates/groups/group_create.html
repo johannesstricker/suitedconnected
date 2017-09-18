@@ -1,0 +1,33 @@
+<template name="groupCreate">
+	<div class="group-create content-margin-top">
+		<form class="main form page">
+			<h3>Create a new group</h3>
+			<!-- TITLE -->
+			<div class="{{errorClass 'name'}}">
+				<label class="control-label" for="title">Name</label>
+				<div class="controls">
+					<input type="text" maxlength="{{maxNameLength}}" name="name" id="name" value="" placeholder="Choose a name" />
+					<span class="help-block">{{errorMessage 'name'}}</span>
+				</div>
+			</div>
+
+			<!-- BODY -->
+			<div class="{{errorClass 'info'}}">
+				<label for="body" class="control-label">Description</label>
+				<div class="controls">
+					<textarea name="info" id="info" rows="5" placeholder="What is this group about?"></textarea>
+					<span class="help-block">{{errorMessage 'info'}}</span>
+				</div>
+			</div>
+
+			<!-- MEMBERS -->
+			<h4>Members</h4>
+			{{> groupInvitations invitationContext}}
+
+			<div class="text-right">
+				<input type="submit" value="Create" class="btn-primary btn" />
+			</div>
+		</form>
+	</div>
+
+</template>

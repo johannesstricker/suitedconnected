@@ -1,0 +1,12 @@
+<template name="sidebarOptions">
+	{{#if canPost}}
+		<div class="sidebar-element">
+			<a href="{{pathFor 'postSubmit' groupId=groupId}}" class="btn btn-l btn-primary post-btn uppercase">
+        <img src="/img/icons/buttons/discussion.svg">Start Discussion
+      </a>
+			<a href="{{pathFor 'postSubmitHand' groupId=groupId}}" class="btn btn-l btn-primary post-btn uppercase">
+        <img src="/img/icons/buttons/cards.svg"> Post Handhistory
+      </a>
+		</div>
+	{{/if}}
+</template>

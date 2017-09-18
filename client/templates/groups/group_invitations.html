@@ -1,0 +1,50 @@
+<template name="groupInvitations">
+	<div class="user-grid js-toggle-inviting">
+		{{#each user in invitedUsers}}
+			{{> memberThumbnail user}}
+		{{/each}}
+
+		{{#if canInvite}}
+			{{#if (instance.state.get 'isInviting')}}
+				<div class="invite js-drop-invite droppable">
+					<p>INVITE</p>
+				</div>
+			{{else}}
+				<div class="invite js-click-invite clickable">
+					<p>INVITE</p>
+				</div>
+			{{/if}}
+
+			{{#if isDragging}}
+				{{#if (isUserInvited draggedUserId)}}
+					<div class="js-drop-uninvite droppable uninvite">
+						<p class="animated zoomIn">KICK</p>
+					</div>	
+				{{/if}}
+			{{/if}}
+		{{/if}}
+	</div>
+
+	{{#if (instance.state.get 'isInviting')}}
+		<div class="group-invitations js-toggle-inviting">
+			<div>
+				<input type="text" class="js-user-search" autocomplete="off" name="{{randomString}}" id="invitation-input" placeholder="Type a username...">
+
+				{{#if (instance.state.get 'isLoading')}}
+					{{> spinner}}
+				{{else}}
+					<div class="user-grid">
+						{{#each user in instance.typeahead}}
+							{{> memberThumbnail user}}
+						{{/each}}
+
+						{{#unless instance.typeahead.length}}
+							<p>No users found for that input.</p>
+						{{/unless}}
+					</div>	
+				{{/if}}		
+			</div>
+		</div>
+	{{/if}}
+</template>
+

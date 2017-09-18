@@ -1,0 +1,13 @@
+<template name="authenticationDropdown">
+  <div class="dropdown authentication-dropdown navigation-element">
+    <a href="#" class="dropdown-toggle navigation-link">Login or Sign up</a>
+
+    <div class="dropdown-content authentication-dropdown-content">
+      {{> Template.dynamic template=currentTemplate data=dataContext}}
+
+      {{#if equals currentTemplate 'login'}}
+        <p class="text-center small-font"><a href="#" class="js-show-retrieve-password no-highlight">I have forgotten my password.</a></p>
+      {{/if}}
+    </div>
+  </div>
+</template>

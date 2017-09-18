@@ -1,0 +1,22 @@
+<template name="landingPageLogin">
+	<div class="landing-page-login">
+	    <form>
+	        <div class="form-group {{errorClass 'email'}}">
+	            <label for="email">Email or Username</label>
+	            <input type="text" name="email" placeholder="Login with your email or username...">
+	            <p class="help-block">{{errorMessage 'email'}}</p>
+	        </div>
+	        <div class="form-group {{errorClass 'password'}}">
+	            <label for="password">Password</label>
+	            <input type="password" name="password" placeholder="">
+	            <p class="help-block">{{errorMessage 'password'}}</p>
+	        </div>
+	        <p class="help-block {{errorClass 'login'}}">{{errorMessage 'login'}}</p>
+	        <div class="form-group">
+	            <input type="submit" value="Login" class="btn btn-primary">
+	        </div>
+	    </form>
+	    <p class="text-center"><a href="#" class="js-switch-template" data-target-template="landingPageRegistration">Not a member yet? Sign up now.</a></p>
+	    <p class="text-center"><a href="{{pathFor 'index'}}">Continue without login.</a></p>
+	</div>
+</template>
